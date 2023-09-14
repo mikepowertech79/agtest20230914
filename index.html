@@ -26,9 +26,13 @@
       });
     }
     document.getElementById('button_id_01_Simple_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
-    document.getElementById('button_id_02_Custom_Click').addEventListener('click', () => {sendCustomEvent('button_click', 'button_id_01');});
-    document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {// Click for the new button with ID "button_id_03_addPaymentInfo"
-      gtag('event', 'add_payment_info', {// Trigger the new custom event "add_payment_info"
+    document.getElementById('button_id_02_Custom_Click').addEventListener('click', () => {
+      gtag('event', 'custom_click', {
+        'event_category': 'custom_button_click'
+      });
+    });
+    document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {
+      gtag('event', 'add_payment_info', {
         'event_category': 'payment',
         'event_label': 'payment_info',
         'value': 1
