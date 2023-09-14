@@ -14,9 +14,9 @@
   </script>
 </head>
 <body>
-  <button id="button_id_01_click">click</button>
-  <button id="button_id_custom_event_01">custom_event_01</button>
-  <button id="button_id_add_payment_info">add_payment_info</button>
+  <button id="button_id_01_Click">Click</button>
+  <button id="button_id_02_add_shipping_info">Custom Click add_shipping_info</button>
+  <button id="button_id_03_addPaymentInfo">Click Me for Payment Info</button>
   <script>
     function sendCustomEvent(eventCategory, eventLabel) {// Function to send the custom event to GA4
       gtag('event', 'click', {
@@ -27,13 +27,13 @@
     }
     document.getElementById('button_id_01_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
 	
-    document.getElementById('button_id_custom_event_01').addEventListener('click', () => {
-      gtag('event', 'custom_event_01', {
-        'event_category': 'custom_button_click',
-        'event_label': 'button_id_01',
-        'value': 1
+    document.getElementById('button_id_02_add_shipping_info').addEventListener('click', () => {
+      gtag('event', 'add_shipping_info', {
+        'event_name': 'event_add_shipping_info'
       });
     });
+	
+	
     document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {
       gtag('event', 'add_payment_info', {
         'event_category': 'payment',
