@@ -17,6 +17,7 @@
   <button id="button_id_01_Click">Click</button>
   <button id="button_id_02_add_shipping_info">Custom Click add_shipping_info</button>
   <button id="button_id_03_addPaymentInfo">Click Me for Payment Info</button>
+  <button id="button_id_04_refound">Denis Refound</button>
   <script>
     function sendCustomEvent(eventCategory, eventLabel) {// Function to send the custom event to GA4
       gtag('event', 'click', {
@@ -31,9 +32,7 @@
       gtag('event', 'add_shipping_info', {
         'event_name': 'event_add_shipping_info'
       });
-    });
-	
-	
+    });	
     document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {
       gtag('event', 'add_payment_info', {
         'event_category': 'payment',
@@ -41,6 +40,13 @@
         'value': 1
       });
     });
+	
+	document.getElementById('button_id_04_refound').addEventListener('click', () => {
+      gtag('event', 'refound', {
+        'refound_id': 1
+      });
+    });
+	
   </script>
 </body>
 </html>
