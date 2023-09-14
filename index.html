@@ -1,1 +1,24 @@
-hellio world
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-410FP9STVB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-410FP9STVB');
+</script>
+
+
+
+
+<button id="my-button">Click Me</button>
+
+<script>
+  document.getElementById('my-button').addEventListener('click', () => {
+    gtag('event', 'click', {
+      'event_category': 'button',
+      'event_label': 'my-button',
+      'value': 1
+    });
+  });
+</script>
