@@ -28,7 +28,7 @@
     document.getElementById('button_id_01_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
 	
     document.getElementById('button_id_02_Custom_Click').addEventListener('click', () => {
-      gtag('event', 'custom_click', {
+      gtag('event', 'custom_event_01', {
         'event_category': 'custom_button_click',
         'event_label': 'button_id_01',
         'value': 1
