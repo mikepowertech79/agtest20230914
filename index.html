@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Add this line for the favicon -->
-  <!-- Other meta tags, stylesheets, or scripts can go here -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-410FP9STVB"></script>
   <script>
@@ -16,10 +15,24 @@
   </script>
 </head>
 <body>
-  <!-- Your website content goes here -->
-  <button id="my-button">Click Me</button>
+  <!-- The buttons you want to track -->
+  <button id="button_id_01">Click Me 01</button>
+  <button id="button_id_02_normalClick">Click Me 02 Normal Click</button>
+  
   <script>
-    document.getElementById('my-button').addEventListener('click', () => {
+    // Function to send the custom event to GA4
+    function sendCustomEvent() {
+      gtag('event', 'click', {
+        'event_category': 'button_click', // You can customize the category
+        'event_label': 'button_id_01', // The parameter name you've configured in GA4
+      });
+    }
+    
+    // Add a click event listener to the button with ID "button_id_01"
+    document.getElementById('button_id_01').addEventListener('click', sendCustomEvent);
+    
+    // Normal Click for button with ID "button_id_02_normalClick"
+    document.getElementById('button_id_02_normalClick').addEventListener('click', () => {
       gtag('event', 'click', {
         'event_category': 'button',
         'event_label': 'my-button',
