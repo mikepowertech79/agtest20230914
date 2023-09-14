@@ -14,7 +14,7 @@
   </script>
 </head>
 <body>
-  <button id="button_id_01_Simple_Click">Simple Click</button>
+  <button id="button_id_01_Click">Click</button>
   <button id="button_id_02_Custom_Click">Custom Click</button>
   <button id="button_id_03_addPaymentInfo">Click Me for Payment Info</button>
   <script>
@@ -25,12 +25,17 @@
         'value': 1
       });
     }
-    document.getElementById('button_id_01_Simple_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
+    document.getElementById('button_id_01_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
+	
     document.getElementById('button_id_02_Custom_Click').addEventListener('click', () => {
       gtag('event', 'custom_click', {
-        'event_category': 'custom_button_click'
+        'event_category': 'custom_button_click',
+        'event_label': 'button_id_01',
+        'value': 1
       });
     });
+	
+	
     document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {
       gtag('event', 'add_payment_info', {
         'event_category': 'payment',
