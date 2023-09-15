@@ -11,10 +11,23 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-410FP9STVB');
+	
+	function getTransactionId() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        return `TRN_${year}${month}${day}_${hours}${minutes}${seconds}`;
+    }
 
     function purchase() {
+	  const transactionId = getTransactionId();
       gtag("event", "purchase", {
-			transaction_id: "T_12345",
+			transaction_id: transactionId,
 			value: 25.42,
 			tax: 4.90,
 			shipping: 5.99,
@@ -22,7 +35,7 @@
 			coupon: "SUMMER_SALE",
 			items: [
 			 {
-			  item_id: "SKU_12345",
+			  item_id: "SKU_12345" + "_" + transactionId,
 			  item_name: "Stan and Friends Tee",
 			  affiliation: "Google Merchandise Store",
 			  coupon: "SUMMER_FUN",
@@ -42,7 +55,7 @@
 			  quantity: 1
 			},
 			{
-			  item_id: "SKU_12346",
+			  item_id: "SKU_12346" + "_" + transactionId,
 			  item_name: "Google Grey Women's Tee",
 			  affiliation: "Google Merchandise Store",
 			  coupon: "SUMMER_FUN",
