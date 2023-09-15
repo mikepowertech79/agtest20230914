@@ -9,16 +9,20 @@
   <script>
   alert('1');
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-410FP9STVB');
-	
-	alert(JSON.stringify(window.dataLayer, null, 2));
-	
-	function viewDataLayer() {
-        alert(JSON.stringify(window.dataLayer, null, 2));
+    function gtag(){
+		alert(JSON.stringify(window.dataLayer, null, 2));
+        alert('gtag arguments: ' + JSON.stringify(arguments));
+        dataLayer.push(arguments);
     }
-	
+
+    if (performance.navigation.type !== performance.navigation.TYPE_RELOAD) {
+        gtag('js', new Date());
+        gtag('config', 'G-410FP9STVB');
+    }
+
+    function viewDataLayer() {
+        alert(JSON.stringify(window.dataLayer, null, 2));
+    }   
   </script>
 </head>
 <body>
@@ -27,7 +31,7 @@
   <button onclick="viewDataLayer()">View dataLayer</button>
   <script>
     function sendCustomEvent(eventCategory, eventLabel) {
-	alert('2');
+    alert('2');
       gtag('event', 'click', {
         'event_category': eventCategory,
         'event_label': eventLabel,
@@ -38,7 +42,7 @@
       sendCustomEvent('button', 'my-button');
     });
     document.getElementById('button_02').addEventListener('click', () => {
-	alert('3');
+    alert('3');
       gtag('event', 'add_payment_info', {
         'event_category': 'payment',
         'event_label': 'payment_info',
