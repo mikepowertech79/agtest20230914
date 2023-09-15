@@ -11,68 +11,67 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-410FP9STVB');
-  </script>
-  <script>
-    function logPurchaseEvent(transactionId, value, currency, items) {
-      gtag('event', 'purchase', {
-        'transaction_id': transactionId,
-        'items': items,
-        // add any other parameters that are relevant for your tracking needs
+
+    // Function to trigger the purchase event
+    function triggerPurchaseEvent() {
+      gtag("event", "purchase", {
+        transaction_id: "T_12345",
+        value: 25.42,
+        tax: 4.90,
+        shipping: 5.99,
+        currency: "USD",
+        coupon: "SUMMER_SALE",
+        items: [
+         {
+          item_id: "SKU_12345",
+          item_name: "Stan and Friends Tee",
+          affiliation: "Google Merchandise Store",
+          coupon: "SUMMER_FUN",
+          discount: 2.22,
+          index: 0,
+          item_brand: "Google",
+          item_category: "Apparel",
+          item_category2: "Adult",
+          item_category3: "Shirts",
+          item_category4: "Crew",
+          item_category5: "Short sleeve",
+          item_list_id: "related_products",
+          item_list_name: "Related Products",
+          item_variant: "green",
+          location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+          price: 9.99,
+          quantity: 1
+        },
+        {
+          item_id: "SKU_12346",
+          item_name: "Google Grey Women's Tee",
+          affiliation: "Google Merchandise Store",
+          coupon: "SUMMER_FUN",
+          discount: 3.33,
+          index: 1,
+          item_brand: "Google",
+          item_category: "Apparel",
+          item_category2: "Adult",
+          item_category3: "Shirts",
+          item_category4: "Crew",
+          item_category5: "Short sleeve",
+          item_list_id: "related_products",
+          item_list_name: "Related Products",
+          item_variant: "gray",
+          location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+          price: 20.99,
+          promotion_id: "P_12345",
+          promotion_name: "Summer Sale",
+          quantity: 1
+        }]
       });
     }
 
-    var items = [
-      {
-        'item_name': 'Product1',
-        'item_id': 'P1',
-      },
-      {
-        'item_name': 'Product2',
-        'item_id': 'P2',
-      },
-    ];
+    // Add click event listener to the button
+    document.getElementById("button_purchase").addEventListener("click", triggerPurchaseEvent);
   </script>
 </head>
 <body>
-  <button id="button_id_01_Click">Click</button>
-  <button id="button_id_02_add_shipping_info">Custom Click add_shipping_info</button>
-  <button id="button_id_03_addPaymentInfo">Click Me for Payment Info</button>
-  <button id="button_id_04_refund">Denis Refund</button> <!-- changed 'refound' to 'refund' -->
-  <button id="button_id_05_purchase">Log Purchase</button>
-  <script>
-    function sendCustomEvent(eventCategory, eventLabel) {// Function to send the custom event to GA4
-      gtag('event', 'click', {
-        'event_category': eventCategory,
-        'event_label': eventLabel,
-        'value': 1
-      });
-    }
-
-    document.getElementById('button_id_01_Click').addEventListener('click', () => {sendCustomEvent('button', 'my-button');});
-
-    document.getElementById('button_id_02_add_shipping_info').addEventListener('click', () => {
-      gtag('event', 'add_shipping_info', {
-        'event_name': 'event_add_shipping_info'
-      });
-    }); 
-
-    document.getElementById('button_id_03_addPaymentInfo').addEventListener('click', () => {
-      gtag('event', 'add_payment_info', {
-        'event_category': 'payment',
-        'event_label': 'payment_info',
-        'value': 1
-      });
-    });
-
-    document.getElementById('button_id_04_refund').addEventListener('click', () => { <!-- updated id to match the new button ID -->
-      gtag('event', 'refund', { <!-- corrected 'refound' to 'refund' -->
-        'transaction_id': 'trnId123' // used 'transaction_id' to specify the ID of the transaction being refunded
-      });
-    });
-
-    document.getElementById('button_id_05_purchase').addEventListener('click', () => {
-      logPurchaseEvent('trnId123', 200.00, 'USD', items);
-    });
-  </script>
+  <button id="button_purchase">purchase</button>
 </body>
 </html>
