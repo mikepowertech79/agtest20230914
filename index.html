@@ -14,6 +14,7 @@
 
     // Function to trigger the purchase event
     function triggerPurchaseEvent() {
+	alert('PurchaseEvent');
       gtag("event", "purchase", {
         transaction_id: "T_12345",
         value: 25.42,
