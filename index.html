@@ -14,7 +14,7 @@
 
     // Function to trigger the purchase event
     function triggerPurchaseEvent() {
-	alert('PurchaseEvent');
+      alert('PurchaseEvent');
       gtag("event", "purchase", {
         transaction_id: "T_12345",
         value: 25.42,
@@ -68,8 +68,10 @@
       });
     }
 
-    // Add click event listener to the button
-    document.getElementById("button_purchase").addEventListener("click", triggerPurchaseEvent);
+    // Add click event listener to the button after DOM is loaded
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById("button_purchase").addEventListener("click", triggerPurchaseEvent);
+    });
   </script>
 </head>
 <body>
